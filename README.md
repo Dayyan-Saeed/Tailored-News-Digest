@@ -54,22 +54,39 @@ lib/
 
 ## Setup Instructions
 
-1. Clone the repository
+1. Clone the repository:
+   ```bash
+   git clone <your-repository-url>
+   cd tailored_news_digest
+   ```
+
 2. Install Flutter dependencies:
    ```bash
    flutter pub get
    ```
+
 3. Set up Firebase:
-   - Create a new Firebase project
-   - Add Android and iOS apps
-   - Download and add configuration files
-   - Enable Authentication and Firestore
+   - Create a new Firebase project at [Firebase Console](https://console.firebase.google.com)
+   - Add Android and iOS apps to your Firebase project
+   - Download `google-services.json` for Android and place it in `android/app/`
+   - Download `GoogleService-Info.plist` for iOS and place it in `ios/Runner/`
+   - **IMPORTANT**: These files are excluded from git for security. Each developer needs their own copies.
+   - Enable Authentication and Firestore in your Firebase Console
+   - Run `flutterfire configure` to generate `firebase_options.dart`
 
 4. Set up News API:
-   - Get an API key from [NewsAPI](https://newsapi.org)
-   - Add the API key to your environment variables
+   - Get an API key from [NewsAPI](https://newsapi.org) or [GNews](https://gnews.io)
+   - Update `lib/config/api_config.dart` with your API key
 
-5. Run the app:
+5. Backend Setup (optional):
+   - Navigate to `tailored_news_backend/`
+   - Create a Python virtual environment: `python -m venv venv`
+   - Activate it: `venv\Scripts\activate` (Windows) or `source venv/bin/activate` (Mac/Linux)
+   - Install dependencies: `pip install -r requirements.txt` (if exists)
+   - Run migrations: `python manage.py migrate`
+   - Start the server: `python manage.py runserver`
+
+6. Run the app:
    ```bash
    flutter run
    ```
